@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Miles Keiser - Portfolio website">
+  <title>Miles Keiser | Berkeley EECS Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- HEADER SECTION (Centered, Early Internet style) -->
+    <header>
+      <h1>MILES KEISER</h1>
+      <div class="ascii-divider">========================================================</div>
+      <p class="subtitle">University of California, Berkeley &nbsp;|&nbsp; EECS &nbsp;|&nbsp; 2nd Year</p>
+      <p class="clubs">Formula Electric Berkeley &nbsp;|&nbsp; Combat Robotics Berkeley</p>
+      <div class="ascii-divider">========================================================</div>
+      <br>
+    </header>
+
+    <!-- PROJECT EXPLORER WINDOW (CRT & Terminal style) -->
+    <main class="terminal-window">
+      
+      <!-- Top Title Bar of the Terminal Window -->
+      <div class="terminal-header">
+        <div class="window-title">
+          PROJECT_EXPLORER.EXE
+        </div>
+        <div class="window-controls">
+          <span>_</span>
+          <span>[ ]</span>
+          <span>X</span>
+        </div>
+      </div>
+
+      <!-- Main CRT Screen Body -->
+      <div class="terminal-body">
+        <!-- Nested Folder Directory Tree -->
+        <div class="explorer-tree">
+          
+          <!-- Root Projects Folder (Open by default) -->
+          <details open>
+            <summary class="category-node">C:/Users/Miles_Keiser/Projects/</summary>
+            
+            <!-- Category: PCB -->
+            <details>
+              <summary class="category-node">PCB/</summary>
+              
+              <details>
+                <summary class="project-node">Custom Robot Controller</summary>
+                <div class="project-details">
+                  <h4>USB Human Input Device Implemented with a Custom PCB</h4>
+                  <div class="project-meta">
+                    <span><strong>Hardware: </strong> Pi Pico, 2 Layer PCB</span>
+                    <span><strong>Software: </strong> KiCAD</span>
+                  </div>
+                  <p class="project-description">
+                    This project was my first fully solo PCB project. 
+                  </p>
+                  <div class="project-links">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ GitHub Repository ]</a>
+                  </div>
+                </div>
+              </details>
+              
+              <!-- HOW TO ADD ANOTHER PROJECT:
+              Copy the <details> block above, paste it here, and change the title and content.
+              -->
+              
+            </details>
+
+            <!-- Category: Software -->
+            <details>
+              <summary class="category-node">Software/</summary>
+              <details>
+                <summary class="project-node">sGit</summary>
+                <div class="project-details">
+                  <h4>Shitty Git</h4>
+                  <div class="project-meta">
+                    <span>Command Line Source Control Application</span>
+                    <span><strong>Language: C</strong></span>
+                  </div>
+                  <p class="project-description">
+                    My first real C program. Over the course of 4 days I set out to create a program capable of basic source control. 
+                    The program (sGit) works by storing the differences between a file's current state and it's state in the previous commit. These differences are stored in a text file for later reference(.sgit.txt). 
+                    sGit is able to reconstruct the exact file state from just the initial state and the accumulated differences. It is currently a bare bones implementation with several significant limitations, 
+                    including not being able to track files nested within the project directory and not supporting the deletion of files.
+                    Implemented commands: help, init, commit, checkout. AI Usage: No code written by an LLM. An LLM was used for help with some algorithms. AI Overview was also referenced
+                  </p>
+                  <div class="project-gallery" id="sgit-gif-container">
+                    <div id="initAndCommitgif">
+                      <div class="project-image-wrapper">
+                        <img src="assets/initAndCommit.gif">
+                      </div>
+                      <span class="project-image-description">Initializing repository and commiting changes demonstration</span>
+                    </div>
+                    <div id="checkoutgif">
+                      <div class="project-image-wrapper">
+                        <img src="assets/checkout.gif">
+                      </div>
+                      <span class="project-image-description">Demonstration of checkout previous commit</span>
+                    </div>
+                  </div>
+                  
+                  <div class="project-links">
+                    <a href="https://github.com/Miles-Miles2/s-git" target="_blank" rel="noopener noreferrer" class="retro-link">[ View Github ]</a>
+                  </div>
+                </div>
+              </details>
+              
+            </details>
+
+            <!-- Category: CAD (Open by default to show a working example) -->
+            <details>
+              <summary class="category-node">CAD/</summary>
+              
+              <!-- Project 1: Combat Robot CAD (Open by default) -->
+              <details>
+                <summary class="project-node">Combat Robot CAD</summary>
+                <div class="project-details">
+                  <h4>3lb Combat Robot "Antigravity"</h4>
+                  <div class="project-meta">
+                    <span><strong>Software:</strong> SolidWorks, ANSYS FEA</span>
+                    <span><strong>Processes:</strong> CNC Milling, 3D Printing, Waterjet</span>
+                  </div>
+                  <p class="project-description">
+                    Engineered the complete mechanical assembly of a 3lb beetleweight combat robot. Optimized weight distribution to house a high-RPM brushless motor driving a vertical impact disk weapon. Performed Finite Element Analysis (FEA) in ANSYS to simulate weapon impact stresses and verify shaft deflection. Manufactured chassis rails from 6061 aluminum using a CNC mill.
+                  </p>
+                  
+                  <!-- Retro image gallery using the generated monochrome graphic -->
+                  <div class="project-gallery">
+                    <div class="project-image-wrapper">
+                      <img src="combat_robot_cad.png" alt="3lb Combat Robot CAD wireframe model">
+                      <div class="image-placeholder-text">MONITOR_CAM_01</div>
+                    </div>
+                  </div>
+                  
+                  <div class="project-links">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ Grab CAD Model ]</a>
+                  </div>
+                </div>
+              </details>
+              
+            </details>
+
+            <!-- Category: Misc -->
+            <details>
+              <summary class="category-node">Misc/</summary>
+              
+              <!-- Project 1: Retro Web Engine -->
+              <details>
+                <summary class="project-node">Early Web Engine</summary>
+                <div class="project-details">
+                  <h4>Retro Portfolio Theme</h4>
+                  <div class="project-meta">
+                    <span><strong>Stack:</strong> HTML5, CSS3 (Vanilla)</span>
+                    <span><strong>Responsive:</strong> Yes</span>
+                  </div>
+                  <p class="project-description">
+                    A lightweight, responsive portfolio website styled with early-internet aesthetics. Implemented using native details/summary components for directory-style folder navigation, avoiding heavy JS frameworks. Featuring a terminal-themed project explorer window and custom image filters.
+                  </p>
+                  <div class="project-links">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ Theme Template ]</a>
+                  </div>
+                </div>
+              </details>
+              
+            </details>
+            
+            <!-- HOW TO ADD A NEW CATEGORY:
+            Copy one of the <details> blocks above (like Category: Misc), paste it here, and change the name.
+            -->
+
+          </details>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer>
+      <p>Miles Keiser &copy; 2026 | Berkeley EECS</p>
+      <p>miles.keiser _ berkeley.edu</p>
+      <p>Designed for GitHub Pages</p>
+    </footer>
+
+  </div>
+
+  <!-- CAMPANILE ASCII ART -->
+  <pre id="campanile-ascii">
+                      /\
+                      ||
+                     /  \
+                    /    \
+                   /      \
+                  /        \
+                 /          \
+              /\ |          | /\
+              || |          | || 
+             +||==============||+
+             |                  |
+             |===|==========|===|
+             |   | || || || |   |
+             |   | || || || |   |
+             |   | || || || |   |
+             |===|==========|===|
+             |                  |
+             |  /------------\  |
+             | |  XI  XII  I  | |
+             | | X     |    II| |
+             | |IX     |   III| |
+             | |VII     \   IV| |
+             | | VII   VI  v  | |
+             |  \------------/  |
+             |                  |
+             |        ||        |
+             |        ||        |
+             |        ||        |
+             |                  |
+             |        ||        |
+             |        ||        |
+             |        ||        |
+             |                  |
+             |        ||        |
+             |        ||        |
+             |        ||        |
+             |                  |
+             |        ||        |
+             |        ||        |
+             |        ||        |
+             |                  |
+             |        ||        |
+             |        ||        |
+             |        ||        |
+             |                  |
+             |        ||        |
+             |        ||        |
+             |        ||        |
+             |                  |
+             |                  |
+  </pre>
+
+</body>
+</html>
