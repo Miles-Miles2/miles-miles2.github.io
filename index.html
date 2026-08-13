@@ -18,7 +18,6 @@
       <p class="subtitle">University of California, Berkeley &nbsp;|&nbsp; EECS &nbsp;|&nbsp; 2nd Year</p>
       <p class="clubs">Formula Electric Berkeley &nbsp;|&nbsp; Combat Robotics Berkeley</p>
       <div class="ascii-divider">========================================================</div>
-      <br>
     </header>
 
     <!-- PROJECT EXPLORER WINDOW (CRT & Terminal style) -->
@@ -46,22 +45,85 @@
             <summary class="category-node">C:/Users/Miles_Keiser/Projects/</summary>
             
             <!-- Category: PCB -->
-            <details>
+            <details open>
               <summary class="category-node">PCB/</summary>
               
               <details>
                 <summary class="project-node">Custom Robot Controller</summary>
-                <div class="project-details">
+                 <div class="project-details">
                   <h4>USB Human Input Device Implemented with a Custom PCB</h4>
                   <div class="project-meta">
                     <span><strong>Hardware: </strong> Pi Pico, 2 Layer PCB</span>
                     <span><strong>Software: </strong> KiCAD</span>
                   </div>
                   <p class="project-description">
-                    This project was my first fully solo PCB project. 
+                    This project was my first fully solo PCB project. Overall, it is a control panel with various inputs that can feed into a PC via USB. It features 5 buttons, 1 rotary switch, 2 rotary encoders, and a linear slider. 
+                    These are all mounted to a custom 3D printed panel designed in Onshape. The PCB containes the Pi Pico and terminal blocks for the wires to the inputs to connect to. It also features an 8 to 1 shift register. Ostensibly, this was done to save pins on the pico, but it was mostly for fun, since the pico had enough pins for each button without the IC.
+                    The pico connects to the PC via a Micro USB cable.
+                    The pico was programmed in CircuitPython and appeared to the PC as a standard gamepad.
+                    <br>
+                    The solution for connecting the panel buttons/encoders/slide was definitely bad in hindsight. I just soldered wires directly to the leads, which made it all very fragile. 
+                    Next time I would mount them to a little mounting PCB, then connect the wires to those little PCBs.
+                    <br>
+                    Overall, it's a pretty simple project, but it taught me a lot about the process of going from idea to finished product.
                   </p>
-                  <div class="project-links">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ GitHub Repository ]</a>
+                  <div class="project-gallery" id="sgit-gif-container">
+                    <div id="hidpcb">
+                      <div class="project-image-wrapper">
+                        <img src="assets/hidfinished.JPG">
+                      </div>
+                      <span class="project-image-description">Final assembled project</span>
+                    </div>
+                    <div id="checkoutgif">
+                      <div class="project-image-wrapper">
+                        <img src="assets/hid_panel.JPG">
+                      </div>
+                      <span class="project-image-description">Assembled Panel</span>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary class="project-node">Autonomous Relay Control PCB (Formula Electric)</summary>
+                <div class="project-details">
+                  <h4>Autonomous Shutdown Circuit handling board</h4>
+                  <div class="project-meta">
+                    <span><strong>Hardware: </strong> 4 layer PCB</span>
+                    <span><strong>Software: </strong> Altium</span>
+                  </div>
+                  <p class="project-description">
+                    My first PCB assignment on the Low Voltage subteam for Formula Electric Berkeley. 
+                    Overall, the board is responsible for handling various autonomous mode functions. It handles the shutdown circuit (SDC), autonomous indicator lights, and powering the emergency brake solenoid for autonomous mode.
+                    When the car is operating normally, the board just passes the shutdown signal through. When in auto mode, however, a relay routes SDC to an off-board Remote Emergency Stop relay. 
+                    In auto mode, SDC is additionally gated by a 2nd relay that is controlled by an external button. Finally, there is a relay holds the Emergency Brake solenoid open if SDC on.
+                    <br>
+                    The board features 3 voltage regulators (24V -> 12V, 24V -> 5V, 5V -> 3.3V) which power various functions on the board. It also has some high current pathways (mainly SDC and the power for the solenoid), so I had to consider trace widths.
+                    It was also a little space constrained, so more attention had to be paid to how all of the components were laid out, especially since there were several large components (relays, connectors).
+                    <br>
+                    This project also happened to be the first time I used Altium, which was quite a bit more complicated than KiCAD. However, I was quickly able to familiarize myself and make effective use of the tool.
+                  </p>
+                  <div class="project-gallery" id="sgit-gif-container">
+                    <div class="horizontal-img-container">
+                      <div>
+                        <div class="project-image-wrapper">
+                          <img src="assets/arcpcb.png">
+                        </div>
+                        <span class="project-image-description">V2 PCB Layout</span>
+                      </div>
+                      <div>
+                        <div class="project-image-wrapper">
+                          <img src="assets/arcpcb3D.png">
+                        </div>
+                        <span class="project-image-description">V2 PCB Layout, 3D</span>
+                      </div>
+                    </div>
+                    <div>
+                        <div class="project-image-wrapper">
+                          <img src="assets/arcpcbAssemblyed.JPG">
+                        </div>
+                        <span class="project-image-description">V1 PCB assembled</span>
+                      </div>
                   </div>
                 </div>
               </details>
@@ -73,15 +135,14 @@
             </details>
 
             <!-- Category: Software -->
-            <details>
+            <details open>
               <summary class="category-node">Software/</summary>
               <details>
                 <summary class="project-node">sGit</summary>
                 <div class="project-details">
-                  <h4>Shitty Git</h4>
+                  <h4>Shitty Git - Command Line Source Control Application</h4>
                   <div class="project-meta">
-                    <span>Command Line Source Control Application</span>
-                    <span><strong>Language: C</strong></span>
+                    <span><strong>Language:</strong> C</span>
                   </div>
                   <p class="project-description">
                     My first real C program. Over the course of 4 days I set out to create a program capable of basic source control. 
@@ -114,32 +175,89 @@
             </details>
 
             <!-- Category: CAD (Open by default to show a working example) -->
-            <details>
+            <details open>
               <summary class="category-node">CAD/</summary>
               
               <!-- Project 1: Combat Robot CAD (Open by default) -->
               <details>
-                <summary class="project-node">Combat Robot CAD</summary>
+                <summary class="project-node">"Spinnerella" Combat Robot</summary>
                 <div class="project-details">
-                  <h4>3lb Combat Robot "Antigravity"</h4>
+                  <h4>1lb PLA-nt Weight Combat Robot "Spinerella"</h4>
                   <div class="project-meta">
-                    <span><strong>Software:</strong> SolidWorks, ANSYS FEA</span>
-                    <span><strong>Processes:</strong> CNC Milling, 3D Printing, Waterjet</span>
+                    <span><strong>CAD Program:</strong> Onshape</span>
+                    <span><strong>Processes:</strong> 3D Printing</span>
                   </div>
                   <p class="project-description">
-                    Engineered the complete mechanical assembly of a 3lb beetleweight combat robot. Optimized weight distribution to house a high-RPM brushless motor driving a vertical impact disk weapon. Performed Finite Element Analysis (FEA) in ANSYS to simulate weapon impact stresses and verify shaft deflection. Manufactured chassis rails from 6061 aluminum using a CNC mill.
+                    Designed, 3D printed, and competed with a 1lb 3D printed combat robot as a team of 4. We decided on a 2 wheel, invertible, vertical spinner design. I was responsible for and led the CAD for the robot.
+                    The weapon was powered by a hub motor, which itself was supported on both sides by weapon rails. The weapon rails also featured "ears" that were supposed to stop the weapon from hitting the ground when upside down.
+                    In theory, this would allow the bot to be invertible (i.e. function while upside down). However, in practice the wheels weren't able to get enough grip, causing us to be stuck.
+                    The robot also featured parametric sloped armor that wrapped around the sides and front of the bot, which I'm particularly proud of. The angle and thickness of the armor was adjustable via variables. 
+                    The armor would then adjust according. Also, it would conform to any changes in the chassis' dimensions, requiring no outside intervention.
+                    <br>
+                    Unfortunately, our wheels were able to get enough grip, causing our mobility to be severely limited. In the tournament, this deficiency ultimately caused us to lose some matches we really shouln't have and led to an early exit.
+                    Overall though, this was my most serious CAD project at the time, and was, in my opinion, pretty well designed. If we didn't have that mobility issue, I think we could've made it pretty far.
                   </p>
                   
                   <!-- Retro image gallery using the generated monochrome graphic -->
-                  <div class="project-gallery">
-                    <div class="project-image-wrapper">
-                      <img src="combat_robot_cad.png" alt="3lb Combat Robot CAD wireframe model">
-                      <div class="image-placeholder-text">MONITOR_CAM_01</div>
+                  <div class="project-gallery" id="sgit-gif-container">
+                    <div class="horizontal-img-container">
+                      <div> 
+                        <div class="project-image-wrapper">
+                          <img src="assets/1lb-cad-0.75view.png">
+                        </div>
+                        <span class="project-image-description">Final Robot CAD, 3/4 view</span>
+                      </div>
+                      <div>
+                        <div class="project-image-wrapper">
+                          <img src="assets/1lb-cad-side_cutout.png">
+                        </div>
+                        <span class="project-image-description">Final Robot CAD, side view w/ cutout</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="project-image-wrapper">
+                        <img src="assets/1lb-assembled.jpg">
+                      </div>
+                      <span class="project-image-description">Assembled Robot</span>
                     </div>
                   </div>
                   
                   <div class="project-links">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ Grab CAD Model ]</a>
+                    <a href="https://grabcad.com/library/spinerella-assembly-1" target="_blank" rel="noopener noreferrer" class="retro-link">[ Grab CAD Model ]</a>
+                  </div>
+                </div>
+              </details>
+
+              <details>
+                <summary class="project-node">"SwingWing" CAD-a-thon Competition (2nd Place)</summary>
+                <div class="project-details">
+                  <h4>Shape changing drone designed for 8 hour CAD-a-thon </h4>
+                  <div class="project-meta">
+                    <span><strong>Programs:</strong> Onshape, KiCAD</span>
+                  </div>
+                  <p class="project-description">
+                    In Spring 2026 I participated in an 8 hour CAD-a-thon along with 3 other teammates. 
+                    The challenge was to design a system that was capable of transporting essential items across urban terrain.
+                    Our solution was a quadcopter drone with 2 of the arms featuring hinges. 
+                    The hinges were passive, so if we drove the corresponding motors in reverse, the arms would fold down and graps any package below using rubber grippers.
+                    My primary responsiblity was speccing all of the electronics. I had to consider flight time, power usage, and the computer vision stack.
+                    I decided a battery that would let us reach enough destinations. I also chose the cameras/sensors and computer that would let us navigate an urban environment autonomously, as well as a suitable flight controller.
+                    In order to connect these difference pieces I designed a cusom PCB that would connect the Pi, flight computer, battery, and ESCs.
+                  </p>
+                  <!-- Retro image gallery using the generated monochrome graphic -->
+                  <div class="project-gallery">
+                    <div> 
+                      <div class="project-image-wrapper">
+                        <img src="assets/swingwing_folded.png">
+                      </div>
+                      <span class="project-image-description">Drone in folded/cargo carrying configuration</span>
+                    </div>
+                    <div>
+                      <div class="project-image-wrapper">
+                        <img src="assets/swingwing_normal.png">
+                      </div>
+                      <span class="project-image-description">Drone in normal configuration</span>
+                    </div>
                   </div>
                 </div>
               </details>
@@ -147,23 +265,35 @@
             </details>
 
             <!-- Category: Misc -->
-            <details>
+            <details open>
               <summary class="category-node">Misc/</summary>
               
-              <!-- Project 1: Retro Web Engine -->
-              <details>
-                <summary class="project-node">Early Web Engine</summary>
+              <details open>
+                <summary class="project-node">FPGA Optimization Internship</summary>
                 <div class="project-details">
-                  <h4>Retro Portfolio Theme</h4>
+                  <h4>Minimize bus cycles times on Cycle IV FPGA at Opto22</h4>
                   <div class="project-meta">
-                    <span><strong>Stack:</strong> HTML5, CSS3 (Vanilla)</span>
-                    <span><strong>Responsive:</strong> Yes</span>
+                    <span><strong>Toolchain:</strong> Quartus Prime</span>
+                    <span><strong>FPGA Hardware:</strong> Altera Cyclone IV E</span>
                   </div>
                   <p class="project-description">
-                    A lightweight, responsive portfolio website styled with early-internet aesthetics. Implemented using native details/summary components for directory-style folder navigation, avoiding heavy JS frameworks. Featuring a terminal-themed project explorer window and custom image filters.
+                    The product I worked on featured an IMX6ULL processor and Cyclone IV FPGA. The FPGA acts as a middleman between the processor and the off-board modules plugged into the rack.
+                    The slowest action (accessing the Digital I/O lines) took 17 processor clock cycles. My task was to optimize this and reduce the number of cycles required for accesses.
+                    This was complicated by the fact that the processor (running at 99 Mhz) and the FPGA (80 Mhz) were asynchronous. I mainly made savings by moving the Digital IO Verilog module to the main 80 Mhz clock the rest of the FPGA was running on, since it was running on a separate 20 Mhz clock before.
+                    I also removed and shuffled around the double latching to make the accesses faster while maintaining integrity.
+                    <br>
+                    In the end, I was able to reduce the theoretical fastest bus cycles from 17 to 9 for Digital I/O accesses. However, the system became bottlenecked by a different module, so the actual performance gain was from 17 to 11 cycles.
+                    <br>
+                    When I finished the optimizations, I wrote several bash scripts that thoroughly tests all of the FPGA's funcitonality to ensure that my changes didn't mess anything up.
+                    I ran these tests overnight in an oven (70 Celcius to -15 Celcius) to catch all edge cases and found no errors, qualifying my changes to be deployed into production.
                   </p>
-                  <div class="project-links">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ Theme Template ]</a>
+                  <div class="project-gallery" id="sgit-gif-container">
+                    <div>
+                      <div class="project-image-wrapper">
+                        <img src="assets/snapmodules.JPG">
+                      </div>
+                      <span class="project-image-description">Example FPGA modules</span>
+                    </div>
                   </div>
                 </div>
               </details>
@@ -179,15 +309,47 @@
 
       </div>
     </main>
+    <div class="ascii-divider">========================================================</div>
+    
+    <!-- FOOTER AREA (Footer & Status Box) -->
+    <div class="footer-area">
+      <!-- FOOTER SECTION -->
+      <footer>
+        <p>Miles Keiser | Berkeley EECS '29</p>
+        <p>miles.keiser _ berkeley.edu</p>
+        <p><a id="resume-link" href="#" target="_blank">View Resume</a></p>
+        <!--<p>Designed for GitHub Pages</p> -->
+      </footer>
 
-    <!-- FOOTER SECTION -->
-    <footer>
-      <p>Miles Keiser &copy; 2026 | Berkeley EECS</p>
-      <p>miles.keiser _ berkeley.edu</p>
-      <p>Designed for GitHub Pages</p>
-    </footer>
+      <!-- STATUS BOX -->
+      <div class="status-box">
+        <div class="status-title">SYSTEM STATUS</div>
+        <div class="status-content">
+          <p><span>LOC:</span> <span>Berkeley, CA</span></p>
+          <p><span>UPTIME:</span> <span>99.9% (excluding finals)</span></p>
+          <p><span>LAST UPDATE:</span> <span>2026-08-07</span></p>
+          <p><span>PROJECT STATUS:</span> <span>Unfinished, starting new project...</span></p>
+        </div>
+      </div>
+    </div>
 
   </div>
+
+  <script>
+    // ==========================================================
+    // CONFIGURATION: RESUME PDF FILENAME
+    // 1. Drop your PDF resume file in the same directory as this index.html file.
+    // 2. Change the filename below to match your PDF file.
+    // ==========================================================
+    const RESUME_FILE = "Miles_Keiser_Resume.pdf";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const link = document.getElementById("resume-link");
+      if (link) {
+        link.href = RESUME_FILE;
+      }
+    });
+  </script>
 
   <!-- CAMPANILE ASCII ART -->
   <pre id="campanile-ascii">
