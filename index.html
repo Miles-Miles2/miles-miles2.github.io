@@ -35,6 +35,29 @@
         </div>
       </div>
 
+      <!-- entry template
+        <details>
+          <summary class="project-node">NAME</summary>
+            <div class="project-details">
+            <h4>HEADING/TITLE</h4>
+            <div class="project-meta">
+              <span><strong>TAGS </strong> TAGS</span>
+            </div>
+            <p class="project-description">
+              DESCRIPTION
+            </p>
+            <div class="project-gallery">
+              <div>
+                <div class="project-image-wrapper">
+                  <img src="PATH">
+                </div>
+                <span class="project-image-description">IMG DESCRIPTION</span>
+              </div>
+            </div>
+          </div>
+        </details>
+      -->
+
       <!-- Main CRT Screen Body -->
       <div class="terminal-body">
         <!-- Nested Folder Directory Tree -->
@@ -43,9 +66,66 @@
           <!-- Root Projects Folder (Open by default) -->
           <details open>
             <summary class="category-node">C:/Users/Miles_Keiser/Projects/</summary>
-            
-            <!-- Category: PCB -->
             <details open>
+              <summary class="category-node">RTL/</summary>
+                <details open>
+                  <summary class="project-node">[Ongoing] HyperRAM Chipyard Integration</summary>
+                    <div class="project-details">
+                    <h4>Integrating 3rd Party HyperRAM controller logic into Chipyard</h4>
+                    <div class="project-meta">
+                      <span><strong>Lab: </strong> SLICE (Dr. Borivoje Nikolic)</span><br>
+                      <span><strong>HDL: </strong> Chisel, Verilog</span>
+                    </div>
+                    <p class="project-description">
+                      I am working on a project to integrate a 3rd party HyperRAM controller into Chipyard (Berkeley's SoC framework).
+                      HyperRAM allows for lower pin counts, which is why we want to used it on future tapeouts.
+                      This project involves: connecting up the controller to Chipyard's systems (e.g. connecting it to the TileLink Bus),
+                      verifying that the controller actually works through simulation(we are also designing a FPGA PCB to test in hardware), 
+                      and eventually cleaning up the logic so that it matches the desired pattern within Chipyard.
+                      <br>
+                      Since I am new to Chisel/Scala and Chipyard, I had to spend quite a bit of time getting used to the ecosystem. Especially since I was only familiar with writing raw Verilog for an FPGA before.
+                    </p>
+                  </div>
+                </details>              
+              <details open>
+                <summary class="project-node">FPGA Optimization Internship</summary>
+                <div class="project-details">
+                  <h4>Minimize bus cycles times on Cyclone IV FPGA at Opto22</h4>
+                  <div class="project-meta">
+                    <span><strong>Toolchain:</strong> Quartus Prime</span>
+                    <span><strong>FPGA Hardware:</strong> Altera Cyclone IV E</span>
+                  </div>
+                  <p class="project-description">
+                    The product I worked on featured an IMX6ULL processor and Cyclone IV FPGA. The FPGA acts as a middleman between the processor and the off-board modules plugged into the rack.
+                    The slowest action (accessing the Digital I/O lines) took 17 processor clock cycles. My task was to optimize this and reduce the number of cycles required for accesses.
+                    This was complicated by the fact that the processor (running at 99 Mhz) and the FPGA (80 Mhz) were asynchronous. I mainly made savings by moving the Digital IO Verilog module to the main 80 Mhz clock the rest of the FPGA was running on, since it was running on a separate 20 Mhz clock before.
+                    I also removed and shuffled around the double latching to make the accesses faster while maintaining integrity.
+                    <br>
+                    In the end, I was able to reduce the theoretical fastest bus cycles from 17 to 9 for Digital I/O accesses. However, the system became bottlenecked by a different module, so the actual performance gain was from 17 to 11 cycles.
+                    <br>
+                    When I finished the optimizations, I wrote several bash scripts that thoroughly tests all of the FPGA's functionality to ensure that my changes didn't mess anything up.
+                    I ran these tests overnight in an oven (70 Celcius to -15 Celcius) to catch all edge cases and found no errors, qualifying my changes to be deployed into production.
+                  </p>
+                  <div class="project-gallery" id="sgit-gif-container">
+                    <div>
+                      <div class="project-image-wrapper">
+                        <img src="assets/snapmodules.JPG">
+                      </div>
+                      <span class="project-image-description">Example FPGA modules</span>
+                    </div>
+                  </div>
+                </div>
+              </details>
+              
+            </details>
+            
+            <!-- HOW TO ADD A NEW CATEGORY:
+            Copy one of the <details> blocks above (like Category: Misc), paste it here, and change the name.
+            -->
+
+          <!-- Category: PCB -->
+          </details>
+          <details open>
               <summary class="category-node">PCB/</summary>
               
               <details>
@@ -58,7 +138,7 @@
                   </div>
                   <p class="project-description">
                     This project was my first fully solo PCB project. Overall, it is a control panel with various inputs that can feed into a PC via USB. It features 5 buttons, 1 rotary switch, 2 rotary encoders, and a linear slider. 
-                    These are all mounted to a custom 3D printed panel designed in Onshape. The PCB containes the Pi Pico and terminal blocks for the wires to the inputs to connect to. It also features an 8 to 1 shift register. Ostensibly, this was done to save pins on the pico, but it was mostly for fun, since the pico had enough pins for each button without the IC.
+                    These are all mounted to a custom 3D printed panel designed in Onshape. The PCB contains the Pi Pico and terminal blocks for the wires to the inputs to connect to. It also features an 8 to 1 shift register. Ostensibly, this was done to save pins on the pico, but it was mostly for fun, since the pico had enough pins for each button without the IC.
                     The pico connects to the PC via a Micro USB cable.
                     The pico was programmed in CircuitPython and appeared to the PC as a standard gamepad.
                     <br>
@@ -194,7 +274,7 @@
                     The robot also featured parametric sloped armor that wrapped around the sides and front of the bot, which I'm particularly proud of. The angle and thickness of the armor was adjustable via variables. 
                     The armor would then adjust according. Also, it would conform to any changes in the chassis' dimensions, requiring no outside intervention.
                     <br>
-                    Unfortunately, our wheels were able to get enough grip, causing our mobility to be severely limited. In the tournament, this deficiency ultimately caused us to lose some matches we really shouln't have and led to an early exit.
+                    Unfortunately, our wheels were able to get enough grip, causing our mobility to be severely limited. In the tournament, this deficiency ultimately caused us to lose some matches we really shouldn't have and led to an early exit.
                     Overall though, this was my most serious CAD project at the time, and was, in my opinion, pretty well designed. If we didn't have that mobility issue, I think we could've made it pretty far.
                   </p>
                   
@@ -239,10 +319,10 @@
                     In Spring 2026 I participated in an 8 hour CAD-a-thon along with 3 other teammates. 
                     The challenge was to design a system that was capable of transporting essential items across urban terrain.
                     Our solution was a quadcopter drone with 2 of the arms featuring hinges. 
-                    The hinges were passive, so if we drove the corresponding motors in reverse, the arms would fold down and graps any package below using rubber grippers.
+                    The hinges were passive, so if we drove the corresponding motors in reverse, the arms would fold down and grab any package below using rubber grippers.
                     My primary responsiblity was speccing all of the electronics. I had to consider flight time, power usage, and the computer vision stack.
                     I decided a battery that would let us reach enough destinations. I also chose the cameras/sensors and computer that would let us navigate an urban environment autonomously, as well as a suitable flight controller.
-                    In order to connect these difference pieces I designed a cusom PCB that would connect the Pi, flight computer, battery, and ESCs.
+                    In order to connect these difference pieces I designed a custom PCB that would connect the Pi, flight computer, battery, and ESCs.
                   </p>
                   <!-- Retro image gallery using the generated monochrome graphic -->
                   <div class="project-gallery">
@@ -265,46 +345,7 @@
             </details>
 
             <!-- Category: Misc -->
-            <details open>
-              <summary class="category-node">Misc/</summary>
-              
-              <details open>
-                <summary class="project-node">FPGA Optimization Internship</summary>
-                <div class="project-details">
-                  <h4>Minimize bus cycles times on Cycle IV FPGA at Opto22</h4>
-                  <div class="project-meta">
-                    <span><strong>Toolchain:</strong> Quartus Prime</span>
-                    <span><strong>FPGA Hardware:</strong> Altera Cyclone IV E</span>
-                  </div>
-                  <p class="project-description">
-                    The product I worked on featured an IMX6ULL processor and Cyclone IV FPGA. The FPGA acts as a middleman between the processor and the off-board modules plugged into the rack.
-                    The slowest action (accessing the Digital I/O lines) took 17 processor clock cycles. My task was to optimize this and reduce the number of cycles required for accesses.
-                    This was complicated by the fact that the processor (running at 99 Mhz) and the FPGA (80 Mhz) were asynchronous. I mainly made savings by moving the Digital IO Verilog module to the main 80 Mhz clock the rest of the FPGA was running on, since it was running on a separate 20 Mhz clock before.
-                    I also removed and shuffled around the double latching to make the accesses faster while maintaining integrity.
-                    <br>
-                    In the end, I was able to reduce the theoretical fastest bus cycles from 17 to 9 for Digital I/O accesses. However, the system became bottlenecked by a different module, so the actual performance gain was from 17 to 11 cycles.
-                    <br>
-                    When I finished the optimizations, I wrote several bash scripts that thoroughly tests all of the FPGA's funcitonality to ensure that my changes didn't mess anything up.
-                    I ran these tests overnight in an oven (70 Celcius to -15 Celcius) to catch all edge cases and found no errors, qualifying my changes to be deployed into production.
-                  </p>
-                  <div class="project-gallery" id="sgit-gif-container">
-                    <div>
-                      <div class="project-image-wrapper">
-                        <img src="assets/snapmodules.JPG">
-                      </div>
-                      <span class="project-image-description">Example FPGA modules</span>
-                    </div>
-                  </div>
-                </div>
-              </details>
-              
-            </details>
             
-            <!-- HOW TO ADD A NEW CATEGORY:
-            Copy one of the <details> blocks above (like Category: Misc), paste it here, and change the name.
-            -->
-
-          </details>
         </div>
 
       </div>
